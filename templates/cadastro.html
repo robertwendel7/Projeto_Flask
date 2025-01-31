@@ -11,16 +11,16 @@
     <!-- <title>Hello, world!</title> -->
   </head>
   <body>
-    <h1>{{titulo}}</h1>
+    <h1>Cadastrar novo usuário</h1>
     
 
-    <form action="/cadastrar" method="POST">
+    <form action="/cadastrarUsuario" method="POST">
         <label>Nome:</label>
         <input type="text" name="nomeUsuario">
         <label>Email:</label>
         <input type="text" name="emailUsuario">
         <label>Senha:</label>
-        <input type="text" name="senhaUsuario">
+        <input type="password" name="senhaUsuario">
         
         <button type="submit">Cadastrar</button>
     </form>

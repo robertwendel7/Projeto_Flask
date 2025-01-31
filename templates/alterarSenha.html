@@ -8,25 +8,21 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <!-- <title>Hello, world!</title> -->
+    <title>Gestão de Usuários</title>
   </head>
   <body>
-    <h1>LOgin</h1>
-    
-
     <form action="/verificarLogin" method="POST">
-        <label>Nome:</label>
-        <input type="text" name="nomeUsuario">
-        <label>Email:</label>
-        <input type="text" name="emailUsuario">
-        <label>Senha:</label>
-        <input type="text" name="senhaUsuario">
-        
-        <button type="submit">Cadastrar</button>
-    </form>
-
-    <h1>{{mensagem}}</h1>
-    
+      
+      <label>Email:</label>
+      <input type="text" name="emailUsuario">
+      <p></p>
+      <label>Senha:</label>
+      <input type="password" name="senhaUsuario">
+      <p></p>
+      <button type="submit">Logar</button>
+  </form>
+      
+      
 
     <!-- Optional JavaScript; choose one of the two! -->
 
