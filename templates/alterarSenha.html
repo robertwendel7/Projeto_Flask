@@ -11,17 +11,27 @@
     <title>Gestão de Usuários</title>
   </head>
   <body>
-    <form action="/verificarLogin" method="POST">
+    <form action="/alterarSenha" method="POST">
       
-      <label>Email:</label>
+    <label>Nome do usuário:</label>
+      <input type="text" name="nomeUsuario">
+      <p></p>
+      <label>Email do usuário:</label>
       <input type="text" name="emailUsuario">
       <p></p>
-      <label>Senha:</label>
-      <input type="password" name="senhaUsuario">
+      <label>Nova senha:</label>
+      <input type="password" name="novaSenha">
       <p></p>
-      <button type="submit">Logar</button>
-  </form>
       
+      
+      <button type="submit">Alterar</button>
+
+  </form>
+  {{mensagem}}
+
+  <a href="/">Voltar</a>
+
+  
       
 
     <!-- Optional JavaScript; choose one of the two! -->

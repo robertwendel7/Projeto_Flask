@@ -11,26 +11,24 @@
     <title>Gestão de Usuários</title>
   </head>
   <body>
-    <form action="/verificarLogin" method="POST">
+    <form action="/recuperarSenha" method="POST">
       
+      <label>Nome:</label>
+      <input type="text" name="nomeUsuario">
+      <p></p>
       <label>Email:</label>
       <input type="text" name="emailUsuario">
       <p></p>
-      <label>Senha:</label>
-      <input type="password" name="senhaUsuario">
-      <p></p>
-      <button type="submit">Logar</button>
-  </form>
       
-      <hr>
-      <a href="/paginaCadastro">faça seu cadastro aqui</a>
-      <p></p>
-      <a href="/paginaRecuperarSenha">esqueci minha senha</a>
-      <p></p>
-      <a href="/listarUsuarios">listar usuários</a>
-      
+      <button type="submit">Recuperar senha</button>
 
-      <p>{{mensagem}}</p>
+  </form>
+  {{mensagem}}
+
+  <a href="/">Voltar</a>
+
+  
+      
 
     <!-- Optional JavaScript; choose one of the two! -->
 

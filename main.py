@@ -51,9 +51,53 @@ def login():
 
     return render_template("index.html")
 
-@app.route("/paginaAlterarSenha", methods=['POST'])
+@app.route("/listarUsuarios")
+def listarUsuarios():
+    return render_template("listaUsuarios.html", lista = usuarios)
+
+@app.route("/paginaRecuperarSenha")
+def paginaAlterarSenha():
+    return render_template("recuperarSenha.html")
+
+@app.route("/recuperarSenha", methods=['POST'])
+def verSenha():
+    nome = request.form.get("nomeUsuario")
+    email = request.form.get("emailUsuario")
+    encontrado = False
+
+    for usuario in usuarios:
+        if(usuario[0] == nome and usuario[1] == email):
+            encontrado = True
+            senha = usuario[2]
+    if(encontrado == True):
+        mensagem = "Sua senha é: " + senha
+        return render_template("recuperarSenha.html", mensagem=mensagem)
+    else:
+        mensagem = "Usuário não encontrado"
+        return render_template("recuperarSenha.html", mensagem=mensagem)
+
+@app.route("/paginaAlterarSenha")
 def paginaAlterarSenha():
     return render_template("alterarSenha.html")
+   
+@app.route("/alterarSenha", methods=[POST])
+def alterarSenha():
+    nome = request.form.get("nomeUsuario")
+    email = request.form.get("emailUsuario")
+    novaSenha = str(request.form.get("novaSenha"))
+    alterado = False
+    global usuarios
+
+    for usuario in usuarios:
+        if(usuario[0] == nome and usuario[1] == email):
+            alterado = True
+            usuario[2] = novaSenha
+    if(alterado == True):
+        mensegem = "Sua senha foi alterada com sucesso!"
+        return render_template("alterarSenha.html", mensagem=mensagem)
+    else:
+            mensegem = "Erro! Usuário não encontrado"
+        return render_template("alterarSenha.html", mensagem=mensagem)
 
 #execução do servidor (chamar a função responsavel por executar o servidor web)
 #colocar no modo servidor (recarregar o srvidor web automaticamente)
