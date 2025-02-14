@@ -1,5 +1,7 @@
 from flask import *
 
+import dadosDB
+
 #inicialização do flask (instanciar o servidor flask)
 app = Flask(__name__)
 
@@ -19,12 +21,11 @@ def paginaCadastro():
 @app.route("/cadastrarUsuario", methods=['GET', 'POST'])
 def cadastrar():
     
-    global usuarios
+    # global usuarios
     nome = request.form.get("nomeUsuario")
     email = request.form.get("emailUsuario")
     senha = str(request.form.get("senhaUsuario"))
-    usuarios.append([nome, email, senha])
-    print(usuarios)
+    dadosDB.inserir(nome, email, senha)
     mensagem = "Usuário cadastrado com sucesso"
 
     return render_template("index.html", mensagem = mensagem)
@@ -53,10 +54,11 @@ def login():
 
 @app.route("/listarUsuarios")
 def listarUsuarios():
-    return render_template("listaUsuarios.html", lista = usuarios)
+    lista_usuariosDB = dadosDB.listar()
+    return render_template("listaUsuarios.html", lista = lista_usuariosDB)
 
 @app.route("/paginaRecuperarSenha")
-def paginaAlterarSenha():
+def paginaRecuperarSenha():
     return render_template("recuperarSenha.html")
 
 @app.route("/recuperarSenha", methods=['POST'])
@@ -80,7 +82,7 @@ def verSenha():
 def paginaAlterarSenha():
     return render_template("alterarSenha.html")
    
-@app.route("/alterarSenha", methods=[POST])
+@app.route("/alterarSenha", methods=['POST'])
 def alterarSenha():
     nome = request.form.get("nomeUsuario")
     email = request.form.get("emailUsuario")
@@ -96,7 +98,7 @@ def alterarSenha():
         mensegem = "Sua senha foi alterada com sucesso!"
         return render_template("alterarSenha.html", mensagem=mensagem)
     else:
-            mensegem = "Erro! Usuário não encontrado"
+        mensegem = "Erro! Usuário não encontrado"
         return render_template("alterarSenha.html", mensagem=mensagem)
 
 #execução do servidor (chamar a função responsavel por executar o servidor web)
